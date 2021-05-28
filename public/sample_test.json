@@ -1,0 +1,146 @@
+{
+  "header": [
+    "TARGET UGC NET ENGLISH WITH S K SIR",
+    "DST 12",
+    "20th Century Literature",
+    "Important Writers",
+    "1"
+  ],
+  "questions": [
+    {
+      "N": 1,
+      "Q": "What was the name of the imaginary village created by Christopher Isherwood along with his friend and long term associate Edward Upward?",
+      "O": ["Potteries", "Mortmere", "Hertford", "Anglishian"],
+      "A": "B",
+      "S": ""
+    },
+    {
+      "N": 2,
+      "Q": "With whom did Christopher Isherwood enjoy a friendship who also served as the inspiration for the work Mr Norris Changes Trains?",
+      "O": ["Edward Upward", "W.H Auden", "Gerald Hamilton", "Stephen Spender"],
+      "A": "C",
+      "S": ""
+    },
+    {
+      "N": 3,
+      "Q": "To which country did Christopher Isherwood flee to along with his friend in the peak year of 1933?",
+      "O": ["Greece", "Rome", "Russia", "China"],
+      "A": "A",
+      "S": ""
+    },
+    {
+      "N": 4,
+      "Q": "Which of these plays was not written by Christopher Isherwood and his friend W.H Auden?",
+      "O": [
+        "On the Frontier",
+        "Descent of F6",
+        "Little Friend",
+        "The Dog beneath the Skin"
+      ],
+      "A": "C",
+      "S": ""
+    },
+    {
+      "N": 5,
+      "Q": "Which of these novels depicted a day in the life of an Englishman who was also a homosexual written by Christopher Isherwood?",
+      "O": [
+        "Mr Norris Changes Trains",
+        "A Single Man",
+        "Prater Violet",
+        "Sally Bowles"
+      ],
+      "A": "B",
+      "S": ""
+    },
+    {
+      "N": 6,
+      "Q": "Which of these by Christopher Isherwood is a fictionalized autobiography?",
+      "O": [
+        "Lions and Shadows",
+        "Christopher and his Kind",
+        "A Single Man",
+        "Mr Norris Changes Trains"
+      ],
+      "A": "A",
+      "S": ""
+    },
+    {
+      "N": 7,
+      "Q": "Arthur Norris, the protagonist of the novel Mr Norris Changes Trains meets the narrator while travelling from where to where?",
+      "O": [
+        "Netherlands to France",
+        "Germany to France",
+        "England to France",
+        "Netherlands to Germany"
+      ],
+      "A": "D",
+      "S": ""
+    },
+    {
+      "N": 8,
+      "Q": "How many short stories did Christopher Isherwood include in his work Goodbye to Berlin?",
+      "O": ["7", "6", "8", "10"],
+      "A": "B",
+      "S": ""
+    },
+    {
+      "N": 9,
+      "Q": "To which country did the famous critical theorist and poet Leopold Senghor belong?",
+      "O": ["Sri-Lanka", "Sicily", "Senegal", "None of these"],
+      "A": "C",
+      "S": ""
+    },
+    {
+      "N": 10,
+      "Q": "In which place did the famous movement of Negritude emerge and was led by Leopold Senghor and Aime Cesaire?",
+      "O": ["Germany", "Nigeria", "Senegal", "France"],
+      "A": "D",
+      "S": ""
+    },
+    {
+      "N": 11,
+      "Q": "What does the critical term used by Leopold Senghor -\u2018Decalage\u2019 mean?",
+      "O": [
+        "Equality in Aesthetics of Black Africans and African Americans",
+        "Unevenness in the African Diaspora",
+        "Counter Culture",
+        "Gap of thought between French and Africans"
+      ],
+      "A": "B",
+      "S": ""
+    },
+    {
+      "N": 12,
+      "Q": "For which poem did Edward Upward receive the Chancellor\u2019s Medal for Verse?",
+      "O": ["Buddha", "Mortmere", "Deadly Spins", "None of these"],
+      "A": "A",
+      "S": ""
+    },
+    {
+      "N": 13,
+      "Q": "Which famous publishing press helped to publish the first novel written by Edward Upward titled Journey to the Border?",
+      "O": ["Oxford", "Cambridge", "Faber and Faber", "Hogarth"],
+      "A": "D",
+      "S": ""
+    },
+    {
+      "N": 14,
+      "Q": "Which of these novels is not a part of the autobiographical trilogy written by Edward Upward titled The Spiral Ascent?",
+      "O": [
+        "Rotten Elements",
+        "No Home but Struggle",
+        "An Unmentionable Man",
+        "In the Thirties"
+      ],
+      "A": "D",
+      "S": ""
+    },
+    {
+      "N": 15,
+      "Q": "To which time in history does the novel Goodbye to Berlin written by Christopher Isherwood belong?",
+      "O": ["First World War", "Pre-Nazi Era", "Cold War", "None of these"],
+      "A": "B",
+      "S": ""
+    }
+  ]
+}

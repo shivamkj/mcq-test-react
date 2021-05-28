@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-const Home = () => {
+const Result = () => {
   return (
     <div>
       <Head>
@@ -10,7 +10,7 @@ const Home = () => {
       </Head>
 
       <main>
-        <h1>
+        <h1 className="text-sm font-sans font-semibold">
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
       </main>
@@ -18,4 +18,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Result;

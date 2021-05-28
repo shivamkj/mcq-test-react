@@ -1,16 +1,128 @@
-html,
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  /* width: 100%; */
+  min-width: fit-content;
+  font-family: "Poppins";
+  background-color: #ffffff;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.que::before {
+  content: attr(data-que) ".";
+  color: #4f46e5;
+  padding-right: 12px;
+  font-weight: bold;
 }
 
-* {
-  box-sizing: border-box;
+.opt {
+  margin: 0.5rem 0;
+  padding: 14px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 7px 7px 12px rgb(163, 177, 198, 0.6),
+    -6px -6px 12px rgba(255, 255, 255, 0.5),
+    inset 2px 2px 3px rgba(136, 165, 191, 0.48), inset -2px -2px 6px #ffffff;
+}
+
+.opt:disabled {
+  opacity: 1;
+  border: none;
+}
+
+.opt::before {
+  content: attr(data-opt) ".";
+  color: #3368fa;
+  padding-right: 12px;
+  font-weight: bold;
+}
+
+.correct,
+.wrong {
+  animation: pulse 0.3s;
+}
+
+.wrong {
+  border: 0.1rem solid #c62828;
+  background-color: #ffcdd2;
+  color: #c62828;
+}
+
+.wrong::before {
+  color: #c62828;
+}
+
+.correct {
+  border: 0.1rem solid #2e7d32;
+  background-color: #c8e6c9;
+  color: #ffe75d;
+  color: #2e7d32;
+}
+.correct::before {
+  color: #2e7d32;
+}
+
+.showSol,
+.result {
+  margin: 0.8rem !important;
+}
+
+.modal {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.modal-container {
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  margin: auto;
+  background: #ffffff;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 0.5rem;
+  border-radius: 0.8rem;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@media (min-width: 768px) {
+  .modal-container {
+    width: 70%;
+    height: 80%;
+    padding: 1rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .modal-container {
+    width: 60%;
+    height: 80%;
+    padding: 1rem;
+    background-color: #4f46e5;
+  }
 }
