@@ -1,0 +1,72 @@
+/* slide enter animation */
+.slide-enter {
+  opacity: 0;
+  transform: translateX(-25vw);
+  z-index: 10;
+}
+.slide-enter.slide-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 500ms linear 300ms, transform 500ms ease-in-out 300ms;
+  z-index: 10;
+}
+
+/* slide exit animation */
+.slide-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+.slide-exit.slide-exit-active {
+  opacity: 0;
+  transform: translateX(25vw);
+  transition: opacity 500ms linear, transform 500ms ease-out;
+}
+.slide-exit-done {
+  opacity: 0;
+}
+
+#timer {
+  transition: width 1s;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

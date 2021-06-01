@@ -1,54 +1,49 @@
-import { useState } from "react";
-import Confetti from "react-dom-confetti";
+import { useEffect, useState } from "react";
+import styles from "../../styles/Question.module.css";
 
 const options = ["A", "B", "C", "D"];
 
-const config = {
-  angle: 90,
-  spread: 360,
-  startVelocity: 30,
-  elementCount: 70,
-  dragFriction: 0.12,
-  duration: "4160",
-  stagger: 3,
-  width: "15px",
-  height: "15px",
-  perspective: "600px",
-  colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"],
-};
-
 const Question = ({ isFinished, question, allSelectedOptions }) => {
   const [showSolution, setShowSolution] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState(undefined);
 
   const onOptionSelect = (index) => {
-    if (selectedOption != null || isFinished) return;
+    if (selectedOption != undefined || isFinished) return;
     setSelectedOption(index);
     const correctOption = String.fromCharCode(65 + index);
     allSelectedOptions.current[question.N - 1] = correctOption;
   };
 
+  useEffect(() => {
+    console.log(
+      String.fromCharCode(65 + selectedOption),
+      question.A,
+      selectedOption
+    );
+    setSelectedOption(undefined);
+  }, [question]);
+
   const getClass = (index) => {
     if (isFinished) return;
-    if (String.fromCharCode(65 + index) == question.A) return "correct";
-    else return index == selectedOption ? "wrong" : "";
+    if (String.fromCharCode(65 + index) == question.A) return styles.correct;
+    else return index == selectedOption ? styles.wrong : "";
   };
 
   return (
     <div className="lg:max-w-2xl my-4 p-2 text-justify bg-gray-100 rounded shadow-lg">
       <div
-        className="font-bold que"
+        className={"font-bold que-before"}
         data-que={question.N}
         dangerouslySetInnerHTML={{ __html: question.Q }}
       />
-      {options.map((option, index) => (
+      {question.O.map((option, index) => (
         <div
-          className={`opt ${selectedOption && getClass(index + 1)}`}
-          data-opt={option}
+          className={`${styles.opt} ${selectedOption && getClass(index + 1)}`}
+          data-opt={options[index]}
           onClick={() => onOptionSelect(index + 1)}
           key={index}
         >
-          {options[index]}
+          {option}
         </div>
       ))}
       {isFinished && (
@@ -70,10 +65,6 @@ const Question = ({ isFinished, question, allSelectedOptions }) => {
           ></div>
         </>
       )}
-      <Confetti
-        active={String.fromCharCode(65 + selectedOption) == question.A}
-        config={config}
-      />
     </div>
   );
 };

@@ -1,15 +1,10 @@
 import { useState } from "react";
 
-const Numbering = ({ total }) => {
+const Numbering = ({ total, onNumClick }) => {
   const [isVisible, setVisible] = useState(() => {
     const width = window.innerWidth > 0 ? window.innerWidth : screen.width;
     return width > 768 ? true : false;
   });
-
-  const onNumClick = (e) => {
-    const questionNum = parseInt(e.target.innerHTML);
-    document.querySelector(`[data-que="${questionNum}"]`).scrollIntoView();
-  };
 
   return (
     <>
