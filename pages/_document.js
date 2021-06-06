@@ -11,7 +11,7 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
         </Head>
-        <body>
+        <body> 
           <Main />
           <div id="modal"></div>
           <div id="toast"></div>

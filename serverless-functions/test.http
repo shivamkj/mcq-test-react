@@ -1,8 +1,14 @@
+# @baseUrl = https://asia-south1-theta-outrider-310911.cloudfunctions.net
+@baseUrl = http://localhost:8080/
+###
+POST {{baseUrl}}/upload-test
+Content-Type: application/json
+
 {
   "examInfo": {
-    "testName": "Shakespere Hamlet DST - 1",
+    "exams": ["NTA NET"],
     "category": "William Shakespeare",
-    "exam": ["NTA NET"],
+    "testName": "Shakespere Hamlet DST 7",
     "timeLimit": 60,
     "negitiveMarking": true,
     "totalQuestions": 10
@@ -28,30 +34,24 @@
       "O": ["Greece", "Rome", "Russia", "China"],
       "A": 0,
       "S": ""
-    },
-    {
-      "N": 4,
-      "Q": "Which of these plays was not written by Christopher Isherwood and his friend W.H Auden?",
-      "O": [
-        "On the Frontier",
-        "Descent of F6",
-        "Little Friend",
-        "The Dog beneath the Skin"
-      ],
-      "A": 2,
-      "S": ""
-    },
-    {
-      "N": 5,
-      "Q": "Which of these novels depicted a day in the life of an Englishman who was also a homosexual written by Christopher Isherwood?",
-      "O": [
-        "Mr Norris Changes Trains",
-        "A Single Man",
-        "Prater Violet",
-        "Sally Bowles"
-      ],
-      "A": 1,
-      "S": ""
     }
   ]
 }
+
+###
+POST {{baseUrl}}/send-result
+Content-Type: application/json
+
+{
+  "testId": "shakespere-hamlet-dst-5",
+  "response": {
+    "name": "Shivam Kumar Jha",
+    "correctAns": 12,
+    "percentage": 50,
+    "time": 120
+  }
+}
+
+###
+GET {{baseUrl}}/get-result?testId=shakespere-hamlet-dst-5
+

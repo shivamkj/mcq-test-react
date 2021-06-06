@@ -1,11 +1,24 @@
 import { useEffect, useState } from "react";
-import showConfetti from "../../utils/confetti";
-import showToast from "../../utils/toast";
 
-const options = ["A", "B", "C", "D"];
+const OPTIONS = ["A", "B", "C", "D"];
 
-const Question = ({ question, isFinished, onFinish }) => {
-  const [selectedOption, setSelectedOption] = useState(undefined);
+const correctOptionStyle = {
+  backgroundColor: "#17da99",
+  animation: "pulse 0.3s",
+};
+const wrongOptionStyle = {
+  backgroundColor: "#fc308c",
+  animation: "pulse 0.3s",
+};
+
+const Question = ({
+  question,
+  isFinished,
+  onFinish,
+  className,
+  preSelectedOption,
+}) => {
+  const [selectedOption, setSelectedOption] = useState(preSelectedOption);
 
   useEffect(() => {
     // if question is finished and no answer is selected , then show right answer
@@ -17,36 +30,37 @@ const Question = ({ question, isFinished, onFinish }) => {
   }, [isFinished]);
 
   const onOptionSelect = (selectedIndex) => {
-    // return if question is already answered or time over
+    // return if question is already answered or time is over
     if (selectedOption != undefined || isFinished == true) return;
     setSelectedOption(selectedIndex);
     const isCorrect = question.A + 1 == selectedIndex;
     onFinish(isCorrect, selectedIndex);
   };
 
-  const getClass = (index) => {
-    if (index - 1 == question.A) return "correct";
-    else return index == selectedOption ? "wrong" : "";
+  const getOptionsStyle = (index) => {
+    console.log("styles");
+    if (index - 1 == question.A) return correctOptionStyle;
+    return index == selectedOption ? wrongOptionStyle : null;
   };
 
   return (
-    <div className="absolute left-0 right-0 mx-auto sm:max-w-xl lg:max-w-3xl mt-4 sm:mt-8 lg:mt-12 p-4 md:p-10 lg:px-24 text-justify bg-indigo-600 sm:border border-white sm:shadow-lg text-white sm:rounded-lg">
+    <div className={className}>
       <div
-        className="text-xl md:text-2xl pb-4 text-white que-before font-semibold"
+        className="text-lg md:text-xl pb-4 text-justify font-semibold bg-white rounded shadow p-2 sm:p-4 que-before"
         data-que={question.N}
         dangerouslySetInnerHTML={{ __html: question.Q }}
       />
-      {options.map((option, index) => (
+      {OPTIONS.map((option, index) => (
         <div
-          className={`opt ${selectedOption && getClass(index + 1)}`}
+          className="opt-before p-3 my-2 text-xl text-indigo-800 bg-indigo-100 shadow rounded-md"
           data-opt={option}
+          style={selectedOption && getOptionsStyle(index + 1)}
           onClick={() => onOptionSelect(index + 1)}
           key={index}
         >
           {question.O[index]}
         </div>
       ))}
-      <div style={{ animation: "fadein 0.5s, fadeout 0.5s 2.5s" }}>1</div>
     </div>
   );
 };

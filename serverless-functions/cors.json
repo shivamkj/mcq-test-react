@@ -1,0 +1,8 @@
+[
+  {
+    "origin": ["https://test.targetwithsksir.com"],
+    "method": ["GET"],
+    "responseHeader": ["Content-Type"],
+    "maxAgeSeconds": 2592000
+  }
+]

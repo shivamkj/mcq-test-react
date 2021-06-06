@@ -3,6 +3,7 @@ import {
   getQuestionNumber,
   getQuestion,
   getOptions,
+  getAnswer,
   clean,
 } from "./extractor";
 
@@ -12,12 +13,12 @@ const parser = (rawText) => {
     const splittedChunk = rawText.split("///");
     const output = {};
 
-    output["header"] = splittedChunk[0].trim().split(/[\r\n]+/g);
+    // output["header"] = splittedChunk[0].trim().split(/[\r\n]+/g);
 
     const questions = [];
     // const instructions = [];
 
-    for (let i = 1; i < splittedChunk.length; i++) {
+    for (let i = 0; i < splittedChunk.length; i++) {
       const rawText = clean(splittedChunk[i].split(/[\r\n]+/g));
       const question = {};
       const answerIndex = findAnswerIndex(rawText);
@@ -25,7 +26,7 @@ const parser = (rawText) => {
         question["N"] = getQuestionNumber(rawText);
         question["Q"] = getQuestion(rawText, answerIndex);
         question["O"] = getOptions(rawText, answerIndex);
-        question["A"] = rawText[answerIndex];
+        question["A"] = getAnswer(rawText[answerIndex]);
         //   question['S'] = processAns(listToStr(que[(num+1):])) if num != -1 else None
         questionNum += 1;
         questions.push(question);

@@ -36,9 +36,22 @@ const getOptions = (rawText, answerIndex) => {
   return options;
 };
 
+const getAnswer = (answer) => {
+  if (answer == "A" || answer == "B" || answer == "C" || answer == "D")
+    return answer.charCodeAt() - 65;
+  throw "Error in Answer";
+};
+
 const clean = (text) => {
   const clean = text.filter((line) => Boolean(line)).map((line) => line.trim());
   return clean;
 };
 
-export { findAnswerIndex, getQuestionNumber, getQuestion, getOptions, clean };
+export {
+  findAnswerIndex,
+  getQuestionNumber,
+  getQuestion,
+  getOptions,
+  getAnswer,
+  clean,
+};

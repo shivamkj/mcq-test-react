@@ -2,47 +2,32 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  background: #f8f8ff;
+}
+
+#modal-container {
+  max-height: 80vh;
+  max-width: 80vw;
+}
+@media (min-width: 640px) {
+  #modal-container {
+    max-height: 60vh;
+    max-width: 60vw;
+  }
+}
+
 .que-before::before {
   content: attr(data-que) ".";
   padding-right: 12px;
   font-weight: bold;
 }
 
-.opt {
-  margin: 0.5rem 0;
-  padding: 14px;
-  border-radius: 8px;
-  background-color: rgba(255, 255, 255, 0.2);
-  font-size: 1.25rem /* 20px */;
-  line-height: 1.75rem /* 28px */;
-}
-
-.opt::before {
+.opt-before::before {
   content: attr(data-opt) ".";
-  color: #fff;
+  color: #3730a3;
   padding-right: 12px;
   font-weight: bold;
-}
-
-.correct,
-.wrong {
-  animation: pulse 0.3s;
-}
-
-.wrong {
-  --tw-gradient-to: #db2777;
-  --tw-gradient-from: #fb923c;
-  --tw-gradient-stops: var(--tw-gradient-from),
-    var(--tw-gradient-to, rgba(251, 146, 60, 0));
-  background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
-}
-
-.correct {
-  --tw-gradient-to: #10b981;
-  --tw-gradient-from: #bef264;
-  --tw-gradient-stops: var(--tw-gradient-from),
-    var(--tw-gradient-to, rgba(190, 242, 100, 0));
-  background-image: linear-gradient(to left, var(--tw-gradient-stops));
 }
 
 /* --------------- Spin Loader --------------- */
