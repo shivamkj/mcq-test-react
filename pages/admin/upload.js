@@ -3,9 +3,11 @@ import Head from "next/head";
 import UploadInputBox from "../../components/admin/UploadInputBox";
 import parser from "../../utils/parser";
 import showToast from "../../utils/toast";
+import postData from "../../utils/postData";
 
 const Upload = () => {
   const [isSubmitted, setSubmitted] = useState(false);
+  const [uploadStatus, setUploadStatus] = useState(false);
   const textareaRef = useRef();
 
   const onSubmit = () => {
@@ -17,6 +19,46 @@ const Upload = () => {
       showToast(err, "ERROR");
     }
   };
+
+  const onUpload = async (res, key) => {
+    setUploadStatus("UPLOADING");
+    const submitData = {
+      questions: textareaRef.current.value.questions,
+      examInfo: { res },
+    };
+    const data = await postData(
+      "https://asia-south1-theta-outrider-310911.cloudfunctions.net/upload-test",
+      submitData,
+      key
+    );
+    if (data == null) {
+      showToast("Error while Uploading data", "ERROR");
+      setUploadStatus("ERROR");
+      return;
+    } else {
+      setUploadStatus("SUCCESS");
+    }
+  };
+
+  if (uploadStatus == "UPLOADING") return <Loader message="Uploading" />;
+  else if (uploadStatus == "SUCCESS")
+    return (
+      <div className="flex justify-center items-center flex-col">
+        <h1 id="message">UPLOADED SUCCESSFULLY</h1>
+        <button class="btn">
+          <a id="test-link" href="#" target="_blank">
+            Test Page Link
+          </a>
+        </button>
+
+        <button className="mt-2 py-2 px-6 bg-indigo-600 rounded text-white">
+          Print with answer
+        </button>
+        <button id="print" class="mt-2 py-2 px-6 rounded text-indigo-600">
+          Print without answer
+        </button>
+      </div>
+    );
 
   return (
     <>
@@ -37,7 +79,7 @@ const Upload = () => {
           cols="50"
         />
         {isSubmitted ? (
-          <UploadInputBox />
+          <UploadInputBox onUpload={onUpload} />
         ) : (
           <button
             className="mt-4 py-2 px-6 bg-indigo-600 rounded text-white"

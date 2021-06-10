@@ -31,7 +31,11 @@ const getOptions = (rawText, answerIndex) => {
     rawText[answerIndex - 2],
     rawText[answerIndex - 1],
   ];
-  if (options.includes(undefined) || options.includes(""))
+  if (
+    options.includes(undefined) ||
+    options.includes("") ||
+    options.includes(null)
+  )
     throw "Options missing. All options must be present.";
   return options;
 };
