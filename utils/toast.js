@@ -4,11 +4,11 @@ toast.configure();
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
-  autoClose: 3000,
+  autoClose: 2000,
   hideProgressBar: true,
   closeOnClick: true,
   pauseOnHover: false,
-  draggable: true,
+  draggable: false,
   transition: Flip,
 };
 

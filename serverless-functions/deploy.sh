@@ -8,7 +8,7 @@ gcloud functions deploy "upload-test" \
     --region=asia-south1 \
     --allow-unauthenticated \
     --memory=128MB \
-    --env-vars-file=.env.yaml
+    --env-vars-file=../.env.yaml
 cd ..
 
 # cd send-result
@@ -36,5 +36,5 @@ cd ..
 echo "Functions deployment Finished"
 
 # Command to setup cors
-# gsutil cors set serverless-functions/cors.json gs://mcq-test
+# gsutil cors set cors.json gs://mcq-test
 # gsutil cors get gs://mcq-test

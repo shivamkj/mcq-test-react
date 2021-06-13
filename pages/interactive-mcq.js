@@ -18,11 +18,17 @@ const wrongSound = typeof Audio != "undefined" && new Audio("/incorrect.wav");
 const TIME_BETWEEN_QUESTIONS = 4000; // in milliseconds
 const TIME_LIMIT = 10; // in seconds
 
+const getUrl = () => {
+  if (typeof window == "undefined") return;
+  const id = window.location.search.slice(4);
+  return "https://storage.googleapis.com/mcq-test/" + id + ".json";
+};
+
 const Test = () => {
   const [testStarted, setTestStarted] = useState(null);
   const [questionFinished, setQuestionFinished] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [data, isLoading] = useFetch("/sample_test.json");
+  const [data, isLoading] = useFetch(getUrl());
   const userResponse = useRef([]);
   const timeTaken = useRef([]);
 

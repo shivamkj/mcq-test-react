@@ -30,6 +30,28 @@ body {
   font-weight: bold;
 }
 
+/* --------------- Table Style --------------- */
+.table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table td,
+.table th {
+  border: 1px solid #a69fff;
+  padding: 0.4rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.table tr:nth-child(even) {
+  background-color: #fff;
+}
+
+.table tr:hover {
+  background-color: #a69fff;
+}
+
 /* --------------- Spin Loader --------------- */
 #loader-wrapper {
   position: fixed;

@@ -1,8 +1,9 @@
-# @baseUrl = https://asia-south1-theta-outrider-310911.cloudfunctions.net
-@baseUrl = http://localhost:8080/
+@baseUrl = https://asia-south1-theta-outrider-310911.cloudfunctions.net
+# @baseUrl = http://localhost:8080/
 ###
 POST {{baseUrl}}/upload-test
 Content-Type: application/json
+Authorization: dGVzdEA5OTg=
 
 {
   "examInfo": {
@@ -43,9 +44,9 @@ POST {{baseUrl}}/send-result
 Content-Type: application/json
 
 {
-  "testId": "shakespere-hamlet-dst-5",
+  "testId": "sss-12",
   "response": {
-    "name": "Shivam Kumar Jha",
+    "name": "Shivam Kumar Jha 4",
     "correctAns": 12,
     "percentage": 50,
     "time": 120
@@ -55,3 +56,12 @@ Content-Type: application/json
 ###
 GET {{baseUrl}}/get-result?testId=shakespere-hamlet-dst-5
 
+###
+OPTIONS {{baseUrl}}/upload-test
+
+###
+GET https://storage.googleapis.com/mcq-test/billing-notification.json
+Origin: http://localhost:3000
+sec-fetch-dest: empty
+sec-fetch-mode: cors
+sec-fetch-site: cross-site

@@ -7,8 +7,8 @@ const db = new Firestore({ keyFilename: serviceKey });
 
 module.exports.function = async (req, res) => {
   try {
-    console.log("env", process.env.S_SECRET_KEY);
-    console.log("env", process.env.DB_NAME);
+    res.set("Access-Control-Allow-Origin", "http://localhost:3000");
+
     if (req.method !== "GET") throw "Method not allowed";
 
     const testId = req.query.testId;
