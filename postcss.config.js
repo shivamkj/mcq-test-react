@@ -12,4 +12,4 @@ module.exports = {
 };
 
 // Command to build css files seprately
-// export NODE_ENV=production && postcss styles/globals.css -o out/tailwind.css
+// export NODE_ENV=production && postcss styles/tailwind.css -o tailwind.css
