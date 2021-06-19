@@ -2,36 +2,7 @@ import { useRef } from "react";
 import { Input, CheckBox } from "./InputComponents";
 import Select from "react-select";
 import showToast from "../../utils/toast";
-
-const EXAMS = [
-  { label: "NET/SET", value: "NET/SET" },
-  { label: "UP PGT", value: "UP PGT" },
-  { label: "UP GIC", value: "UP GIC" },
-  { label: "UP Junior Asst, Teacher", value: "UP Junior Asst, Teacher" },
-  { label: "UP TGT", value: "UP TGT" },
-  { label: "KVS/NVS PGT/TGT", value: "KVS/NVS PGT/TGT" },
-  { label: "DSSB PGT/TGT", value: "DSSB PGT/TGT" },
-  { label: "Uttrakhand L.T Grade", value: "Uttrakhand L.T Grade" },
-  { label: "UP GIC L.T Grade", value: "UP GIC L.T Grade" },
-  { label: "Uttrakhand PGT", value: "Uttrakhand PGT" },
-  { label: "UPHESC (Asst. Prof.)", value: "UPHESC (Asst. Prof.)" },
-];
-
-const CATEGORIES = [
-  "Shakespeare",
-  "Milton",
-  "WordsWorth",
-  "Robert Frost",
-  "John Keats",
-  "Walt Whitman",
-  "P.B Shelley",
-  "A.L Tennyson",
-  "Matthew Arnold",
-  "T.S Eliot",
-  "W.B Yeats",
-  "Pope",
-  "Dry den",
-];
+import { CATEGORIES, EXAMS } from "../../utils/options";
 
 const TIME_LIMITS = [10, 15, 20, 30, 40, 45, 50, 60];
 

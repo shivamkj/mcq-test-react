@@ -1,9 +1,10 @@
 @baseUrl = https://asia-south1-theta-outrider-310911.cloudfunctions.net
 # @baseUrl = http://localhost:8080/
+@authKey = xxxx
 ###
 POST {{baseUrl}}/upload-test
 Content-Type: application/json
-Authorization: dGVzdEA5OTg=
+Authorization: {{authKey}}
 
 {
   "examInfo": {
@@ -56,17 +57,10 @@ Content-Type: application/json
 ###
 POST {{baseUrl}}/get-result
 Content-Type: application/json
-Authorization: dGVzdEA5OTg=
+Authorization: {{authKey}}
 
 {
   "testId": "ddd-test"
 }
 ###
 OPTIONS {{baseUrl}}/get-result
-
-###
-GET https://storage.googleapis.com/mcq-test/billing-notification.json
-Origin: http://localhost:3000
-sec-fetch-dest: empty
-sec-fetch-mode: cors
-sec-fetch-site: cross-site
