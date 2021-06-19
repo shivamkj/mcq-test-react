@@ -25,10 +25,13 @@ const Upload = () => {
     setUploadStatus("UPLOADING");
     const submitData = {
       questions: textareaRef.current.questions,
-      examInfo: res,
+      examInfo: {
+        ...res,
+        totalQuestions: textareaRef.current.questions.length,
+      },
     };
     const data = await postData(
-      "http://localhost:8080/upload-test",
+      "https://asia-south1-theta-outrider-310911.cloudfunctions.net/upload-test",
       submitData,
       key
     );

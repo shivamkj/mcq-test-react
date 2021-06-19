@@ -3,7 +3,7 @@ import Head from "next/head";
 import Loader from "../../components/Loader";
 import { Input } from "../../components/admin/InputComponents";
 import Table from "../../components/admin/Table";
-import showToast from "../../utils/toast";
+import postData from "../../utils/postData";
 
 const Result = () => {
   const [submitStatus, setSubmitStatus] = useState(false);
@@ -12,12 +12,11 @@ const Result = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     setSubmitStatus("UPLOADING");
-    fetch(`http://localhost:8080/get-result?testId=${input.current.id}`)
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(res);
-        setSubmitStatus(res);
-      });
+    postData(
+      "https://asia-south1-theta-outrider-310911.cloudfunctions.net/get-result",
+      { testId: input.current.id },
+      input.current.key
+    ).then((res) => setSubmitStatus(res));
   };
 
   if (submitStatus == "UPLOADING") return <Loader message="Loading" />;

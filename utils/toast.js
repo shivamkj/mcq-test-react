@@ -4,7 +4,7 @@ toast.configure();
 
 const toastConfig = {
   position: toast.POSITION.BOTTOM_LEFT,
-  autoClose: 2000,
+  autoClose: 800,
   hideProgressBar: true,
   closeOnClick: true,
   pauseOnHover: false,

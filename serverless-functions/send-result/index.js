@@ -7,6 +7,15 @@ const db = new Firestore();
 
 module.exports.function = async (req, res) => {
   try {
+    res.set("Access-Control-Allow-Origin", "*");
+
+    if (req.method === "OPTIONS") {
+      res.set("Access-Control-Allow-Methods", "POST");
+      res.set("Access-Control-Allow-Headers", "Content-Type");
+      res.set("Access-Control-Max-Age", "86400");
+      res.status(204).send("");
+      return;
+    }
     if (req.method !== "POST") throw "Method not allowed";
 
     const testId = req.body.testId;

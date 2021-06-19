@@ -44,9 +44,9 @@ POST {{baseUrl}}/send-result
 Content-Type: application/json
 
 {
-  "testId": "sss-12",
+  "testId": "ddd-test",
   "response": {
-    "name": "Shivam Kumar Jha 4",
+    "name": "Shivam Kumar Jha3",
     "correctAns": 12,
     "percentage": 50,
     "time": 120
@@ -54,10 +54,15 @@ Content-Type: application/json
 }
 
 ###
-GET {{baseUrl}}/get-result?testId=shakespere-hamlet-dst-5
+POST {{baseUrl}}/get-result
+Content-Type: application/json
+Authorization: dGVzdEA5OTg=
 
+{
+  "testId": "ddd-test"
+}
 ###
-OPTIONS {{baseUrl}}/upload-test
+OPTIONS {{baseUrl}}/get-result
 
 ###
 GET https://storage.googleapis.com/mcq-test/billing-notification.json

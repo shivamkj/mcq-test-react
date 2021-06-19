@@ -46,7 +46,7 @@ const Question = ({
   return (
     <div className={className}>
       <div
-        className="text-lg md:text-xl pb-4 text-justify font-semibold bg-white rounded shadow p-2 sm:p-4 que-before"
+        className="text-lg md:text-xl pb-4 font-semibold bg-white rounded shadow p-2 sm:p-4 que-before"
         data-que={question.N}
         dangerouslySetInnerHTML={{ __html: question.Q }}
       />

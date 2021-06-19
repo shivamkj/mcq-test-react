@@ -4,7 +4,7 @@ const confettiConfig = {
   particleCount: 100,
   spread: 60,
   origin: { y: 0.5 },
-  ticks: 140,
+  ticks: 60,
 };
 
 const showConfetti = () => confetti(confettiConfig);

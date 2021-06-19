@@ -4,7 +4,7 @@ import Question from "./Question";
 const TABS = ["Correct", "Incorrect", "Unattempted"];
 const selectedTabStyle = { borderColor: "#4338ca", color: "#4338ca" };
 
-const QUESTION_CLASS_NAME = "text-justify mt-4 p-3 sm:p-6 text-indigo-800 sm:rounded-lg"
+const QUESTION_CLASS_NAME = "text-justify mt-3 p-2 text-indigo-800";
 
 const QuestionsTab = ({ questions, userResponse }) => {
   const [currentTab, setCurrentTab] = useState(0);
@@ -17,6 +17,7 @@ const QuestionsTab = ({ questions, userResponse }) => {
             className="inline-block w-1/3 text-gray-500 border-b-2 border-gray-300 text-base sm:text-lg font-semibold focus:outline-none"
             onClick={() => setCurrentTab(index)}
             style={index == currentTab ? selectedTabStyle : null}
+            key={index}
           >
             {tabName}
           </button>

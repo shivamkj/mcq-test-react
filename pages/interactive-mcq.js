@@ -13,10 +13,10 @@ import Result from "../components/interactiive-mcq/Result";
 import getResultAnaysis from "../utils/result";
 
 const correctSound = typeof Audio != "undefined" && new Audio("/correct.wav");
-const wrongSound = typeof Audio != "undefined" && new Audio("/incorrect.wav");
+const wrongSound = typeof Audio != "undefined" && new Audio("/incorrect.mp3");
 
-const TIME_BETWEEN_QUESTIONS = 4000; // in milliseconds
-const TIME_LIMIT = 10; // in seconds
+const TIME_BETWEEN_QUESTIONS = 2000; // in milliseconds
+let TIME_LIMIT = 30; // in seconds
 
 const getUrl = () => {
   if (typeof window == "undefined") return;
@@ -33,7 +33,8 @@ const Test = () => {
   const timeTaken = useRef([]);
 
   useEffect(() => {
-    console.log("initialising test");
+    if (data == null) return;
+    TIME_LIMIT = data.examInfo.timeLimit;
   }, [data]);
 
   const onFinish = (isCorrect, selectedIndex) => {
@@ -53,7 +54,6 @@ const Test = () => {
     };
     if (currentQuestion + 1 == data.questions.length) {
       // Test Finished
-      console.log(timeTaken.current);
       setTimeout(() => setTestStarted(false), TIME_BETWEEN_QUESTIONS);
     } else {
       setTimeout(() => {
@@ -69,15 +69,16 @@ const Test = () => {
 
   if (isLoading == true) return <Loader message="Loading" />;
 
-  if (testStarted == null)
+  if (testStarted == null) {
     return (
       <StartModal
         examInfo={data.examInfo}
         onStart={() => setTestStarted(true)}
       />
     );
+  }
 
-  if (testStarted == false)
+  if (testStarted == false) {
     return (
       <Result
         questions={data.questions}
@@ -88,6 +89,7 @@ const Test = () => {
         )}
       />
     );
+  }
 
   return (
     <>
