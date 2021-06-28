@@ -4,6 +4,7 @@ import {
   getQuestion,
   getOptions,
   getAnswer,
+  getSolution,
   clean,
 } from "./extractor";
 
@@ -13,7 +14,7 @@ const parser = (rawText) => {
     const splittedChunk = rawText.split("///");
     const output = {};
 
-    // output["header"] = splittedChunk[0].trim().split(/[\r\n]+/g);
+
 
     const questions = [];
     // const instructions = [];
@@ -27,7 +28,7 @@ const parser = (rawText) => {
         question["Q"] = getQuestion(rawText, answerIndex);
         question["O"] = getOptions(rawText, answerIndex);
         question["A"] = getAnswer(rawText[answerIndex]);
-        //   question['S'] = processAns(listToStr(que[(num+1):])) if num != -1 else None
+        question['S'] = getSolution(rawText, answerIndex);
         questionNum += 1;
         questions.push(question);
       } else if (rawText[0] == "inst") {
@@ -42,6 +43,8 @@ const parser = (rawText) => {
         // instructions.push(rawText);
         // questions.push(instruction);
       } else throw "Unknown Error occured.";
+      console.log(question)
+      console.log(answerIndex)
     }
 
     if (questionNum != questions[questions.length - 1].N)
@@ -50,6 +53,7 @@ const parser = (rawText) => {
     output["questions"] = questions;
     // output["instructions"] = instructions;
 
+    console.log(output);
     return output;
   } catch (err) {
     throw `There is a error in question number ${questionNum + 1}. ${err}.`;

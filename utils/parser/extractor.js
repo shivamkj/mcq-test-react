@@ -46,6 +46,12 @@ const getAnswer = (answer) => {
   throw "Error in Answer";
 };
 
+const getSolution = (rawText, answerIndex) => {
+  const solutionText = rawText.slice(answerIndex+1, undefined);
+  if (solutionText.length == 0) return ""
+  return toHtml(solutionText.join("<br />"));
+}
+
 const clean = (text) => {
   const clean = text.filter((line) => Boolean(line)).map((line) => line.trim());
   return clean;
@@ -57,5 +63,6 @@ export {
   getQuestion,
   getOptions,
   getAnswer,
+  getSolution,
   clean,
 };

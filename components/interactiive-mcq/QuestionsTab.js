@@ -4,7 +4,7 @@ import Question from "./Question";
 const TABS = ["Correct", "Incorrect", "Unattempted"];
 const selectedTabStyle = { borderColor: "#4338ca", color: "#4338ca" };
 
-const QUESTION_CLASS_NAME = "text-justify mt-3 p-2 text-indigo-800";
+const QUESTION_CLASS_NAME = "text-justify mt-4 p-2 text-indigo-800";
 
 const QuestionsTab = ({ questions, userResponse }) => {
   const [currentTab, setCurrentTab] = useState(0);

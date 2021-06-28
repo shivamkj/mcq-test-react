@@ -46,7 +46,7 @@ const Question = ({
   return (
     <div className={className}>
       <div
-        className="text-lg md:text-xl pb-4 font-semibold bg-white rounded shadow p-2 sm:p-4 que-before"
+        className="text-lg md:text-xl bg-white rounded shadow p-2 sm:p-4 que-before"
         data-que={question.N}
         dangerouslySetInnerHTML={{ __html: question.Q }}
       />
@@ -61,6 +61,11 @@ const Question = ({
           {question.O[index]}
         </div>
       ))}
+      {question.S &&
+        <div
+          className="text-lg md:text-xl bg-gray-100 rounded shadow p-1 sm:p-3" 
+          dangerouslySetInnerHTML={{ __html: question.S }}>
+        </div>}
     </div>
   );
 };
