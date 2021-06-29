@@ -61,10 +61,10 @@ const Question = ({
           {question.O[index]}
         </div>
       ))}
-      {question.S &&
+      {preSelectedOption &&
         <div
           className="text-lg md:text-xl bg-gray-100 rounded shadow p-1 sm:p-3" 
-          dangerouslySetInnerHTML={{ __html: question.S }}>
+          dangerouslySetInnerHTML={{ __html: question.S || "" }}>
         </div>}
     </div>
   );
