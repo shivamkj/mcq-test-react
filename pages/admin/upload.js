@@ -70,18 +70,6 @@ const Upload = () => {
           >
             Go Test Page
           </a>
-          <button
-            className="mt-4 py-2 px-6 bg-indigo-600 rounded text-white"
-            onClick={() => alert("cooming soon")}
-          >
-            Print with answer
-          </button>
-          <button
-            className="mt-2 py-2 px-6 rounded text-indigo-600"
-            onClick={() => alert("cooming soon")}
-          >
-            Print without answer
-          </button>
         </div>
       );
     else if (uploadStatus == "ERROR")

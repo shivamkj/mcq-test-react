@@ -66,7 +66,7 @@ const Result = () => {
         ) : (
           <form className="flex flex-col mt-8 m-2" onSubmit={onSubmit}>
             <Input
-              name="is"
+              name="id"
               placeholder="Test ID"
               type="text"
               required

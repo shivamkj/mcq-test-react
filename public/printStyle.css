@@ -1,0 +1,211 @@
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 25mm 6mm 28mm 6mm;
+    /* top right bottom left */
+    background: url("/watermark.jpg");
+    background-repeat: no-repeat;
+    background-size: 210mm 297mm;
+  }
+
+  html {
+    widows: 2;
+    orphans: 2;
+    font-size: 13px;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+  tfoot {
+    display: table-footer-group;
+  }
+  table {
+    page-break-inside: auto;
+  }
+  tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+}
+
+@media screen {
+  html {
+    background: #f1f2f7;
+  }
+
+  body {
+    max-width: 210mm;
+    background: #fff;
+    margin: 0 auto;
+    padding: 2em;
+  }
+}
+
+html,
+body,
+table {
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.banner {
+  background-color: #196aff;
+  color: #ffffff;
+  padding: 3mm 6mm;
+  margin-bottom: 5mm;
+  page-break-inside: avoid;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 3mm;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 900;
+}
+
+.head {
+  justify-content: center;
+  margin-bottom: 2mm;
+  font-size: 1.7rem;
+}
+
+.watermark {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.watermarkText {
+  transform: rotate(60deg);
+  font-size: 120px;
+  font-weight: 900;
+  opacity: 0.2;
+  text-align: center;
+}
+
+#mainContent {
+  columns: 2;
+  column-gap: 10mm;
+}
+
+.mcq {
+  box-sizing: border-box;
+  box-shadow: #ccc 1px 2px 16px;
+  padding: 0.6rem;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  margin-bottom: 1.2rem;
+}
+
+br {
+  margin-bottom: 0.3rem;
+}
+
+mark {
+  padding: 0.3rem;
+  background-color: #f5ff00;
+  border-radius: 0.3rem;
+}
+
+.link {
+  display: block;
+  width: fit-content;
+  text-decoration: none;
+  padding: 0 0.5rem;
+  margin-top: 0.2rem;
+  border-radius: 0.3rem;
+  background-color: #3a7fff;
+  color: #ffffff;
+}
+
+.passage {
+  margin-bottom: 1.2rem;
+  width: 100%;
+  background-color: #fff;
+}
+
+.question {
+  margin-bottom: 0.3rem;
+  text-align: justify;
+  font-weight: 800;
+}
+
+.question::before {
+  content: "" attr(data-num) ".";
+  padding-right: 0.6rem;
+  font-weight: 800;
+}
+
+.optBlock {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 0.3rem;
+}
+
+.optBlock .option {
+  width: 50%;
+  text-align: left;
+}
+
+.optBlockSingle {
+  margin-bottom: 0.3rem;
+}
+
+.optBlockSingle .option {
+  text-align: justify;
+}
+
+.option::before {
+  content: "" attr(data-num) ".";
+  padding-right: 0.5rem;
+  font-weight: bold;
+}
+
+.inst {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.answer {
+  text-align: justify;
+}
+
+.answer .key {
+  font-weight: bold;
+}
+
+.answer .solution {
+  font-weight: normal;
+}
+
+.passage .body {
+  margin-bottom: 0.2rem;
+  margin-top: 0;
+  text-align: justify;
+}
+
+.poem .body {
+  line-height: 100%;
+}
+
+.passage .heading {
+  margin-bottom: 0.6rem;
+  margin-top: 0.6rem;
+  font-weight: bold;
+}
+
+.passage .que {
+  font-weight: bold;
+}
