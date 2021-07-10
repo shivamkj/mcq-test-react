@@ -11,7 +11,7 @@ import {
 const parser = (rawText) => {
   let questionNum = 0;
   try {
-    const splittedChunk = rawText.split("///");
+    const splittedChunk = rawText.trim().split("///");
     const output = {};
 
 

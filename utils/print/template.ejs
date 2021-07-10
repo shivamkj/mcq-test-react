@@ -59,31 +59,29 @@
     </div>
 
     <!-- <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script> -->
+    <!-- <script src="/paged.js"></script> -->
+    <script src="/paged.polyfill.js"></script>
     <script>
-      const hideAns = window.name == "printNoAns" ? true : false;
+      var hideAns = window.name == "printNoAns" ? true : false;
       if (hideAns) {
         const ans = document.getElementsByClassName("answer");
         for (let i = 0; i < ans.length; i++) {
           ans[i].style.display = "none";
         }
       }
-    </script>
-    <script>
-      window.print();
-      window.close();
-    </script>
-    <!-- <script>
-      console.log("paged")
+      
+      console.log("paged");
       class MyHandler extends Paged.Handler {
         constructor(chunker, polisher, caller) {
           super(chunker, polisher, caller);
         }
         afterRendered(pages) {
           window.print();
-          window.close();
+          console.log("paged print");
+          // window.close();
         }
       }
       Paged.registerHandlers(MyHandler);
-    </script> -->
+    </script>
   </body>
 </html>

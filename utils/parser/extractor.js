@@ -53,7 +53,7 @@ const getSolution = (rawText, answerIndex) => {
 }
 
 const clean = (text) => {
-  const clean = text.filter((line) => Boolean(line)).map((line) => line.trim());
+  const clean = text.map((line) => line.trim()).filter((line) => Boolean(line))
   return clean;
 };
 
