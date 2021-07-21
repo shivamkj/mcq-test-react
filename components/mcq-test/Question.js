@@ -12,21 +12,18 @@ const Question = ({ isFinished, question, allSelectedOptions }) => {
     setSelectedOption(index);
     const correctOption = String.fromCharCode(65 + index);
     allSelectedOptions.current[question.N - 1] = correctOption;
+
   };
 
-  useEffect(() => {
-    console.log(
-      String.fromCharCode(65 + selectedOption),
-      question.A,
-      selectedOption
-    );
-    setSelectedOption(undefined);
-  }, [question]);
+  // useEffect(() => {
+  //   setSelectedOption(undefined);
+  // }, [question]);
 
   const getClass = (index) => {
     if (isFinished) return;
-    if (String.fromCharCode(65 + index) == question.A) return styles.correct;
+    if (index == question.A) return styles.correct;
     else return index == selectedOption ? styles.wrong : "";
+
   };
 
   return (
@@ -38,9 +35,9 @@ const Question = ({ isFinished, question, allSelectedOptions }) => {
       />
       {question.O.map((option, index) => (
         <div
-          className={`${styles.opt} ${selectedOption && getClass(index + 1)}`}
+          className={`${styles.opt} ${selectedOption && getClass(index)}`}
           data-opt={options[index]}
-          onClick={() => onOptionSelect(index + 1)}
+          onClick={() => onOptionSelect(index)}
           key={index}
         >
           {option}

@@ -14,12 +14,11 @@ const Test = () => {
   const result = useRef({});
 
   const onSubmit = () => {
-    const totalQuestion = parseInt(data.questions[data.questions.length - 1].N);
+    const total = data.examInfo.totalQuestions;
     const score = {
       correct: 0,
       wrong: 0,
       skipped: 0,
-      total: totalQuestion,
     };
     let count = 0;
     const length = data.questions.length;
@@ -30,12 +29,12 @@ const Test = () => {
         score.correct++;
       else score.wrong++;
     }
-    const percentage = (score.correct / score.total) * 100;
+    const percentage = (score.correct / total) * 100;
     const percentageRounded = parseFloat(percentage).toFixed(2);
     if (percentageRounded > 50)
-      result.current.message = `Congratulation, you have scored ${score.correct} out of ${score.total} ( ${percentageRounded}% ). Best of Luck for the next test.`;
+      result.current.message = `Congratulation, you have scored ${score.correct} out of ${total} ( ${percentageRounded}% ). Best of Luck for the next test.`;
     else
-      result.current.message = `You scored ${score.correct} out of ${score.total} ( ${percentageRounded}% ). You can improve more. Best of Luck for the next test.`;
+      result.current.message = `You scored ${score.correct} out of ${total} ( ${percentageRounded}% ). You can improve more. Best of Luck for the next test.`;
 
     result.current.score = score;
     setFinished(true);
@@ -43,8 +42,7 @@ const Test = () => {
 
   useEffect(() => {
     const id = window.location.search.substring(1).slice(3);
-    // const url = `https://dailytest.s3.ap-south-1.amazonaws.com/${id}.json`;
-    const url = "/sample_test.json";
+    const url = `https://storage.googleapis.com/mcq-test/${id}.json`;
     fetch(url)
       .then((res) => res.json())
       .then((result) => {
@@ -70,7 +68,7 @@ const Test = () => {
       </Head>
 
       <Header
-        TIME_LIMIT={parseInt(data.header[4]) * 60}
+        TIME_LIMIT={data.examInfo.timeLimit * data.examInfo.totalQuestions}
         isFinished={isFinished}
         onFinish={onSubmit}
       />
@@ -78,11 +76,11 @@ const Test = () => {
       <div className="container flex mt-20">
         <div className="w-full md:w-2/3 p-1">
           <div className="px-3 py-2 mb-2 text-center rounded font-semibold bg-indigo-200 text-indigo-800 lg:max-w-2xl">
-            {data.header[0]}
+            {data.examInfo.testName}
           </div>
           <div className="px-3 py-2 mb-2 rounded font-semibold bg-indigo-200 text-indigo-800 flex justify-between lg:max-w-2xl">
-            <span>{data.header[1]}</span>
-            <span>{data.header[2]}</span>
+            <span>{data.examInfo.category}</span>
+            <span>{data.examInfo.totalQuestions}</span>
           </div>
 
           <div id="questions">
@@ -114,7 +112,7 @@ const Test = () => {
                 <h4 className="text-center text-xl mt-8 max-w-lg">
                   {result.current.message}
                 </h4>
-                <PieChart />
+                <PieChart data={result.current.score} />
               </>
             ) : (
               <button

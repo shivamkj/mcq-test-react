@@ -5,7 +5,6 @@ module.exports = {
 
   darkMode: false,
   theme: {
-    extend: {},
     colors: {
       transparent: "transparent",
       current: "currentColor",
@@ -18,8 +17,4 @@ module.exports = {
       center: true,
     },
   },
-  variants: {
-    extend: {},
-  },
-  plugins: [],
 };

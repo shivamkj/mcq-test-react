@@ -21,7 +21,7 @@ let TIME_LIMIT = 30; // in seconds
 const getUrl = () => {
   if (typeof window == "undefined") return;
   const id = window.location.search.slice(4);
-  return "https://storage.googleapis.com/mcq-test/" + id + ".json";
+  return `https://storage.googleapis.com/mcq-test/${id}.json`;
 };
 
 const Test = () => {

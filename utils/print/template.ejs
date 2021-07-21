@@ -3,6 +3,12 @@
 </div>
 
 <div class="banner head"><span> <%= examInfo.testName %> </span></div>
+<div class="banner">
+  <span>Category: <%= examInfo.category %> </span>
+  <span>Exam: <%= examInfo.exams.join(", ") %> </span>
+  <span>Total Questions: <%= examInfo.totalQuestions %> </span>
+</div>
+
 
 <div id="mainContent">
   <% questions.map((question => { %>
