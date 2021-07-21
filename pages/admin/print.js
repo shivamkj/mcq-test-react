@@ -36,8 +36,13 @@ const Print = () => {
         <title>Print Test PDF</title>
         <script
           src="https://github.com/mde/ejs/releases/download/v3.0.2/ejs.min.js"
-          async
+          defer
         ></script>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+          rel="stylesheet"
+        />
+        <link rel="stylesheet" href="/printStyle.css" />
       </Head>
 
       <div className="container flex justify-center items-center flex-col p-2">

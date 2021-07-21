@@ -1,87 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Test</title>
-    <link rel="stylesheet" href="/printStyle.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div class="watermark">
-      <div class="watermarkText">TARGET WITH SK SIR</div>
+<div class="watermark">
+  <div class="watermarkText">TARGET WITH SK SIR</div>
+</div>
+
+<div class="banner head"><span> <%= examInfo.testName %> </span></div>
+
+<div id="mainContent">
+  <% questions.map((question => { %>
+  <div class="mcq">
+    <div class="question" data-num="<%= question.N %>"><%- question.Q %></div>
+
+    <% const maxLength = question.O.reduce((r,s) => r.length > s.length ? r :
+    s).length; if ( maxLength < 16 ) { %>
+    <div class="optBlockSingle">
+      <div class="option" data-num="A"><%= question.O[0] %></div>
+      <div class="option" data-num="B"><%= question.O[1] %></div>
+      <div class="option" data-num="C"><%= question.O[2] %></div>
+      <div class="option" data-num="D"><%= question.O[3] %></div>
     </div>
+    <% } else { %>
+    <div class="optBlock">
+      <div class="option" data-num="A"><%= question.O[0] %></div>
+      <div class="option" data-num="B"><%= question.O[1] %></div>
+    </div>
+    <div class="optBlock">
+      <div class="option" data-num="C"><%= question.O[2] %></div>
+      <div class="option" data-num="D"><%= question.O[3] %></div>
+    </div>
+    <% } %>
 
-    <div class="banner head"><span> <%= examInfo.testName %> </span></div>
-
-    <div id="mainContent">
-      <% questions.map((question => { %>
-      <div class="mcq">
-        <div class="question" data-num="<%= question.N %>">
-          <%- question.Q %>
-        </div>
-
-        <% const maxLength = question.O.reduce((r,s) => r.length > s.length ? r
-        : s).length; if ( maxLength < 16 ) { %>
-        <div class="optBlockSingle">
-          <div class="option" data-num="A"><%= question.O[0] %></div>
-          <div class="option" data-num="B"><%= question.O[1] %></div>
-          <div class="option" data-num="C"><%= question.O[2] %></div>
-          <div class="option" data-num="D"><%= question.O[3] %></div>
-        </div>
-        <% } else { %>
-        <div class="optBlock">
-          <div class="option" data-num="A"><%= question.O[0] %></div>
-          <div class="option" data-num="B"><%= question.O[1] %></div>
-        </div>
-        <div class="optBlock">
-          <div class="option" data-num="C"><%= question.O[2] %></div>
-          <div class="option" data-num="D"><%= question.O[3] %></div>
-        </div>
+    <div class="answer">
+      <span class="key"
+        >Answer <%= String.fromCharCode(65 + question.A) %>
+      </span>
+      <span class="solution">
+        <% if (!question.S) { %> <%- `Option ${String.fromCharCode(65 +
+        question.A)} is the correct answer.` %> <% } else { %> <%- question.S %>
         <% } %>
-
-        <div class="answer">
-          <span class="key"
-            >Answer <%= String.fromCharCode(65 + question.A) %>
-          </span>
-          <span class="solution">
-            <% if (!question.S) { %> <%- `Option ${String.fromCharCode(65 +
-            question.A)} is the correct answer.` %> <% } else { %> <%-
-            question.S %> <% } %>
-          </span>
-        </div>
-      </div>
-      <% })) %>
+      </span>
     </div>
-
-    <!-- <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script> -->
-    <!-- <script src="/paged.js"></script> -->
-    <script src="/paged.polyfill.js"></script>
-    <script>
-      var hideAns = window.name == "printNoAns" ? true : false;
-      if (hideAns) {
-        const ans = document.getElementsByClassName("answer");
-        for (let i = 0; i < ans.length; i++) {
-          ans[i].style.display = "none";
-        }
-      }
-      
-      console.log("paged");
-      class MyHandler extends Paged.Handler {
-        constructor(chunker, polisher, caller) {
-          super(chunker, polisher, caller);
-        }
-        afterRendered(pages) {
-          window.print();
-          console.log("paged print");
-          // window.close();
-        }
-      }
-      Paged.registerHandlers(MyHandler);
-    </script>
-  </body>
-</html>
+  </div>
+  <% })) %>
+</div>
