@@ -4,7 +4,7 @@ import {
   TrendingUpIcon,
 } from "@heroicons/react/outline";
 import Header from "./Header";
-import PieChart from "../mcq-test/PieChart";
+import PieChart from "../PieChart";
 import QuestionsTab from "./QuestionsTab";
 import { useEffect } from "react";
 import postData from "../../utils/postData";

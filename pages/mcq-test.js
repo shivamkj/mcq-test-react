@@ -3,7 +3,7 @@ import Head from "next/head";
 import Question from "../components/mcq-test/Question";
 import Header from "../components/mcq-test/Header";
 import Numbering from "../components/mcq-test/Numbering";
-import PieChart from "../components/mcq-test/PieChart";
+import PieChart from "../components/PieChart";
 import Loader from "../components/Loader";
 
 const Test = () => {

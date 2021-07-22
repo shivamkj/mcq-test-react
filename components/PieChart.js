@@ -7,7 +7,7 @@ const PieChart = ({ data }) => {
     datasets: [
       {
         label: "Exam Result",
-        data: [data.correct, data.wrong, data.skipped],
+        data,
         backgroundColor: ["#fc5404", "#f98404", "#f9b208"],
         borderColor: [
           "rgba(255, 255, 255, 1)",
