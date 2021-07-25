@@ -5,25 +5,21 @@ const options = ["A", "B", "C", "D"];
 
 const Question = ({ isFinished, question, allSelectedOptions }) => {
   const [showSolution, setShowSolution] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(undefined);
+  const [selectedOption, setSelectedOption] = useState(null);
 
   const onOptionSelect = (index) => {
-    if (selectedOption != undefined || isFinished) return;
+    if (selectedOption != null || isFinished) return;
     setSelectedOption(index);
-    const correctOption = String.fromCharCode(65 + index);
-    allSelectedOptions.current[question.N - 1] = correctOption;
-
+    allSelectedOptions.current[question.N - 1] = index;
   };
 
-  // useEffect(() => {
-  //   setSelectedOption(undefined);
-  // }, [question]);
+  useEffect(() => {
+    if (isFinished && selectedOption == null) setSelectedOption(question.A);
+  }, [isFinished]);
 
   const getClass = (index) => {
-    if (isFinished) return;
     if (index == question.A) return styles.correct;
     else return index == selectedOption ? styles.wrong : "";
-
   };
 
   return (
@@ -35,7 +31,9 @@ const Question = ({ isFinished, question, allSelectedOptions }) => {
       />
       {question.O.map((option, index) => (
         <div
-          className={`${styles.opt} ${selectedOption && getClass(index)}`}
+          className={`${styles.opt} ${
+            selectedOption != null && getClass(index)
+          }`}
           data-opt={options[index]}
           onClick={() => onOptionSelect(index)}
           key={index}

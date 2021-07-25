@@ -1,6 +1,24 @@
 import { useState } from "react";
+import { MenuIcon } from "@heroicons/react/outline";
 
-const Numbering = ({ total, onNumClick }) => {
+const headerOffset = 80;
+
+const onNumClick = (e) => {
+  const questionNum = parseInt(e.target.innerHTML);
+  const elementPosition = document
+    .querySelector(`[data-que="${questionNum}"]`)
+    .getBoundingClientRect().top;
+
+  const scrollRequired = elementPosition - headerOffset + window.pageYOffset;
+
+  window.scrollTo({
+    top: scrollRequired,
+    behavior: "smooth",
+  });
+  // document.querySelector(`[data-que="${questionNum}"]`).scrollIntoView();
+};
+
+const Numbering = ({ totalQuestions }) => {
   const [isVisible, setVisible] = useState(() => {
     const width = window.innerWidth > 0 ? window.innerWidth : screen.width;
     return width > 768 ? true : false;
@@ -16,7 +34,7 @@ const Numbering = ({ total, onNumClick }) => {
           Questions
         </h4>
         <span>
-          {Array(total)
+          {Array(totalQuestions)
             .fill(0)
             .map((_, index) => (
               <div
@@ -28,12 +46,13 @@ const Numbering = ({ total, onNumClick }) => {
               </div>
             ))}
         </span>
+        <div className="h-10" />
       </div>
       <div
-        className="fixed md:hidden right-4 bottom-4 z-30"
+        className="fixed md:hidden right-4 bottom-4 z-30 bg-indigo-800 text-white rounded"
         onClick={() => setVisible(!isVisible)}
       >
-        Numbering
+        <MenuIcon className="h-10 w-12" />
       </div>
     </>
   );

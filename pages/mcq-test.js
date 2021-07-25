@@ -5,6 +5,7 @@ import Header from "../components/mcq-test/Header";
 import Numbering from "../components/mcq-test/Numbering";
 import PieChart from "../components/PieChart";
 import Loader from "../components/Loader";
+import postData from "../utils/postData";
 
 const Test = () => {
   const [data, setData] = useState(null);
@@ -15,17 +16,11 @@ const Test = () => {
 
   const onSubmit = () => {
     const total = data.examInfo.totalQuestions;
-    const score = {
-      correct: 0,
-      wrong: 0,
-      skipped: 0,
-    };
-    let count = 0;
+    const score = { correct: 0, wrong: 0, skipped: 0 };
     const length = data.questions.length;
-    for (let i = 0; i < length; i++) {
-      if (!data.questions[i].A) count++;
-      else if (!selectedOption.current[i - count]) score.skipped++;
-      else if (data.questions[i].A == selectedOption.current[i - count])
+    for (let num = 0; num < length; num++) {
+      if (selectedOption.current[num] == undefined) score.skipped++;
+      else if (data.questions[num].A == selectedOption.current[num])
         score.correct++;
       else score.wrong++;
     }
@@ -38,6 +33,18 @@ const Test = () => {
 
     result.current.score = score;
     setFinished(true);
+    postData(
+      "https://asia-south1-theta-outrider-310911.cloudfunctions.net/send-result",
+      {
+        testId: window.location.search.slice(4),
+        response: {
+          name: localStorage.getItem("name") && "",
+          correctAns: score.correct,
+          percentage: percentageRounded,
+          time: 0.0,
+        },
+      }
+    );
   };
 
   useEffect(() => {
@@ -53,11 +60,6 @@ const Test = () => {
         setLoading(false);
       });
   }, []);
-
-  const onNumClick = (e) => {
-    const questionNum = parseInt(e.target.innerHTML);
-    document.querySelector(`[data-que="${questionNum}"]`).scrollIntoView();
-  };
 
   if (isLoading) return <Loader message="Loading" />;
 
@@ -85,35 +87,31 @@ const Test = () => {
 
           <div id="questions">
             {data.questions.map((question) => {
-              if (typeof question.N == typeof 0)
-                return (
-                  <Question
-                    key={`Q${question.N}`}
-                    isFinished={isFinished}
-                    question={question}
-                    allSelectedOptions={selectedOption}
-                  />
-                );
-              else if (question.N == "P")
-                return (
-                  <div>
-                    <div> {question.Q} </div>
-                    <div> {question.H} </div>
-                    <div> {question.B} </div>
-                  </div>
-                );
-              else if (question.N == "I") return <div> {question.I} </div>;
+              return (
+                <Question
+                  key={`Q${question.N}`}
+                  isFinished={isFinished}
+                  question={question}
+                  allSelectedOptions={selectedOption}
+                />
+              );
             })}
           </div>
 
           <div className="text-center">
             {isFinished ? (
-              <>
+              <div className="max-w-sm mx-auto p-2">
                 <h4 className="text-center text-xl mt-8 max-w-lg">
                   {result.current.message}
                 </h4>
-                <PieChart data={result.current.score} />
-              </>
+                <PieChart
+                  data={[
+                    result.current.score.correct,
+                    result.current.score.wrong,
+                    result.current.score.skipped,
+                  ]}
+                />
+              </div>
             ) : (
               <button
                 onClick={onSubmit}
@@ -126,10 +124,7 @@ const Test = () => {
         </div>
       </div>
 
-      <Numbering
-        total={parseInt(data.questions[data.questions.length - 1].N)}
-        onNumClick={onNumClick}
-      />
+      <Numbering totalQuestions={data.examInfo.totalQuestions} />
     </>
   );
 };
