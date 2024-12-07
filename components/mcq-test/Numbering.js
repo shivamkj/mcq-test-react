@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MenuIcon } from "@heroicons/react/outline";
+import { Bars3Icon } from "@heroicons/react/24/outline";
 
 const headerOffset = 80;
 
@@ -52,7 +52,7 @@ const Numbering = ({ totalQuestions }) => {
         className="fixed md:hidden right-4 bottom-4 z-30 bg-indigo-800 text-white rounded"
         onClick={() => setVisible(!isVisible)}
       >
-        <MenuIcon className="h-10 w-12" />
+        <Bars3Icon className="h-10 w-12" />
       </div>
     </>
   );

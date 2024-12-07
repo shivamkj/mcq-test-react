@@ -1,16 +1,14 @@
 const colors = require("tailwindcss/colors");
 
 module.exports = {
-  purge: ["./pages/**/*.{js,jsx}", "./components/**/*.{js,jsx}"],
-
-  darkMode: false,
+  content: ["./pages/**/*.{js,jsx}", "./components/**/*.{js,jsx}"],
   theme: {
     colors: {
       transparent: "transparent",
       current: "currentColor",
       black: colors.black,
       white: colors.white,
-      gray: colors.coolGray,
+      gray: colors.gray,
       indigo: colors.indigo,
     },
     container: {

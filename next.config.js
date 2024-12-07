@@ -1,7 +1,7 @@
-module.exports = {
-  future: {
-    webpack5: true,
-  },
+// @ts-check
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   webpack: (config) => {
     config.module.rules.push({
       test: /\.ejs/,
@@ -9,5 +9,6 @@ module.exports = {
     });
     return config;
   },
-  target: "serverless",
 };
+
+module.exports = nextConfig;

@@ -2,7 +2,7 @@ import template from "./template.ejs";
 
 const print = async (testData, hideAns) => {
   const htmlContent = await ejs.render(template, testData, { async: true });
-  await import("../paged.polyfill");
+  const { Handler, registerHandlers } = await import("pagedjs");
 
   if (hideAns) {
     const ans = document.getElementsByClassName("answer");
@@ -13,7 +13,7 @@ const print = async (testData, hideAns) => {
 
   document.body.innerHTML = htmlContent;
   console.log("paged");
-  class MyHandler extends Paged.Handler {
+  class MyHandler extends Handler {
     constructor(chunker, polisher, caller) {
       super(chunker, polisher, caller);
     }
@@ -22,7 +22,7 @@ const print = async (testData, hideAns) => {
       window.print();
     }
   }
-  Paged.registerHandlers(MyHandler);
+  registerHandlers(MyHandler);
   return true;
 };
 
