@@ -11,8 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@google-cloud/firestore": "^4.12.2",
-    "@google-cloud/functions-framework": "^1.7.1",
-    "@google-cloud/storage": "^5.8.5"
+    "@google-cloud/firestore": "^7.11.0",
+    "@google-cloud/functions-framework": "^3.4.2",
+    "@google-cloud/storage": "^7.14.0"
   }
 }
