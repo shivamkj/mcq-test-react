@@ -38,7 +38,6 @@ const Question = ({
   };
 
   const getOptionsStyle = (index) => {
-    console.log("styles");
     if (index - 1 == question.A) return correctOptionStyle;
     return index == selectedOption ? wrongOptionStyle : null;
   };
@@ -61,11 +60,12 @@ const Question = ({
           {question.O[index]}
         </div>
       ))}
-      {preSelectedOption &&
+      {preSelectedOption && (
         <div
-          className="text-lg md:text-xl bg-gray-100 rounded shadow p-1 sm:p-3" 
-          dangerouslySetInnerHTML={{ __html: question.S || "" }}>
-        </div>}
+          className="text-lg md:text-xl bg-gray-100 rounded shadow p-1 sm:p-3"
+          dangerouslySetInnerHTML={{ __html: question.S || "" }}
+        ></div>
+      )}
     </div>
   );
 };

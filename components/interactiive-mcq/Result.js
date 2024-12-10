@@ -1,8 +1,8 @@
 import {
   ChartPieIcon,
   ClockIcon,
-  TrendingUpIcon,
-} from "@heroicons/react/outline";
+  CursorArrowRippleIcon,
+} from "@heroicons/react/24/outline";
 import Header from "./Header";
 import PieChart from "../PieChart";
 import QuestionsTab from "./QuestionsTab";
@@ -32,17 +32,19 @@ const Result = ({
     userResponse,
   },
 }) => {
-
   useEffect(() => {
-    postData("https://asia-south1-theta-outrider-310911.cloudfunctions.net/send-result", {
-      testId: window.location.search.slice(4),
-      response: {
-        name: localStorage.getItem("name"),
-        correctAns: totalCorrect,
-        percentage: percentMarks,
-        time: totalTime,
-      },
-    });
+    postData(
+      "https://asia-south1-theta-outrider-310911.cloudfunctions.net/send-result",
+      {
+        testId: window.location.search.slice(4),
+        response: {
+          name: localStorage.getItem("name"),
+          correctAns: totalCorrect,
+          percentage: percentMarks,
+          time: totalTime,
+        },
+      }
+    );
   }, []);
 
   return (
@@ -70,7 +72,7 @@ const Result = ({
         <DataCard
           data={`${percentAccuracy} %`}
           title="Total Accuracy"
-          Icon={TrendingUpIcon}
+          Icon={CursorArrowRippleIcon}
         />
       </div>
       <QuestionsTab questions={questions} userResponse={userResponse} />

@@ -15,7 +15,6 @@ const StartModal = ({ examInfo, onStart }) => {
     }
   };
 
-  console.log(name.current);
   return (
     <Modal isOpen={true}>
       <div className="text-left p-4 sm:p-0 sm:text-center">

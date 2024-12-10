@@ -35,7 +35,6 @@ const Upload = () => {
       submitData,
       key
     );
-    console.log("data", data);
     if (data == null) {
       showToast("Error while Uploading data", "ERROR");
       setUploadStatus("ERROR");

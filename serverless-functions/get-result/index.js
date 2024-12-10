@@ -8,7 +8,6 @@ const db = new Firestore();
 module.exports.function = async (req, res) => {
   try {
     res.set("Access-Control-Allow-Origin", "*");
-    console.log("hello");
 
     if (req.method === "OPTIONS") {
       res.set("Access-Control-Allow-Methods", "POST");

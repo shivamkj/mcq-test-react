@@ -12,13 +12,11 @@ const print = async (testData, hideAns) => {
   }
 
   document.body.innerHTML = htmlContent;
-  console.log("paged");
   class MyHandler extends Handler {
     constructor(chunker, polisher, caller) {
       super(chunker, polisher, caller);
     }
     afterRendered(pages) {
-      console.log("paged print");
       window.print();
     }
   }

@@ -19,7 +19,6 @@ const getResultAnaysis = (userResponse, timeTaken, TIME_LIMIT) => {
       (previousTime || TIME_LIMIT) + (currentTime || TIME_LIMIT)
   );
   const totalTime = (totalTimeSum / 60).toFixed(2);
-  console.log(totalTime, totalTimeSum, timeTaken);
 
   return {
     totalWrong,
