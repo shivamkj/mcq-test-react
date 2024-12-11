@@ -14,8 +14,6 @@ const parser = (rawText) => {
     const splittedChunk = rawText.trim().split("///");
     const output = {};
 
-
-
     const questions = [];
     // const instructions = [];
 
@@ -28,7 +26,7 @@ const parser = (rawText) => {
         question["Q"] = getQuestion(rawText, answerIndex);
         question["O"] = getOptions(rawText, answerIndex);
         question["A"] = getAnswer(rawText[answerIndex]);
-        question['S'] = getSolution(rawText, answerIndex);
+        question["S"] = getSolution(rawText, answerIndex);
         questionNum += 1;
         questions.push(question);
       } else if (rawText[0] == "inst") {
@@ -43,8 +41,6 @@ const parser = (rawText) => {
         // instructions.push(rawText);
         // questions.push(instruction);
       } else throw "Unknown Error occured.";
-      console.log(question)
-      console.log(answerIndex)
     }
 
     if (questionNum != questions[questions.length - 1].N)

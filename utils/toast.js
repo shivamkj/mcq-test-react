@@ -1,8 +1,8 @@
 import { toast, Flip } from "react-toastify";
 
 const toastConfig = {
-  position: "bottom-left",
-  autoClose: 800,
+  position: "top-right",
+  autoClose: 1500,
   hideProgressBar: true,
   closeOnClick: true,
   pauseOnHover: false,

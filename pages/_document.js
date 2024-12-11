@@ -1,5 +1,4 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import { ToastContainer } from "react-toastify";
 
 class MyDocument extends Document {
   render() {
@@ -11,11 +10,10 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
         </Head>
-        <body> 
+        <body>
           <Main />
           <div id="modal"></div>
           <div id="toast"></div>
-          <ToastContainer />
           <NextScript />
         </body>
       </Html>
