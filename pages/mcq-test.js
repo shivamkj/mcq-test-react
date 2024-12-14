@@ -6,6 +6,7 @@ import Numbering from "../components/mcq-test/Numbering";
 import PieChart from "../components/PieChart";
 import Loader from "../components/Loader";
 import postData from "../utils/postData";
+import { NotFound } from "../components/NotFound";
 
 const Test = () => {
   const [data, setData] = useState(null);
@@ -62,6 +63,8 @@ const Test = () => {
   }, []);
 
   if (isLoading) return <Loader message="Loading" />;
+
+  if (data == null) return <NotFound />;
 
   return (
     <>

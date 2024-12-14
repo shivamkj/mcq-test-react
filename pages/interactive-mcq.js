@@ -7,22 +7,17 @@ import Timer from "../components/interactiive-mcq/Timer";
 import Loader from "../components/Loader";
 import showToast from "../utils/toast";
 import showConfetti from "../utils/confetti";
-import useFetch from "../utils/useFetch";
+import { useFetch, getUrl } from "../utils/useFetch";
 import StartModal from "../components/interactiive-mcq/StartModal";
 import Result from "../components/interactiive-mcq/Result";
 import getResultAnaysis from "../utils/result";
+import { NotFound } from "../components/NotFound";
 
 const correctSound = typeof Audio != "undefined" && new Audio("/correct.wav");
 const wrongSound = typeof Audio != "undefined" && new Audio("/incorrect.mp3");
 
 const TIME_BETWEEN_QUESTIONS = 2000; // in milliseconds
 let TIME_LIMIT = 30; // in seconds
-
-const getUrl = () => {
-  if (typeof window == "undefined") return;
-  const id = window.location.search.slice(4);
-  return `https://storage.googleapis.com/mcq-test/${id}.json`;
-};
 
 const Test = () => {
   const [testStarted, setTestStarted] = useState(null);
@@ -69,24 +64,17 @@ const Test = () => {
 
   if (isLoading == true) return <Loader message="Loading" />;
 
+  if (data == null) return <NotFound />;
+
   if (testStarted == null) {
-    return (
-      <StartModal
-        examInfo={data.examInfo}
-        onStart={() => setTestStarted(true)}
-      />
-    );
+    return <StartModal examInfo={data.examInfo} onStart={() => setTestStarted(true)} />;
   }
 
   if (testStarted == false) {
     return (
       <Result
         questions={data.questions}
-        resultAnalysis={getResultAnaysis(
-          userResponse.current,
-          timeTaken.current,
-          TIME_LIMIT
-        )}
+        resultAnalysis={getResultAnaysis(userResponse.current, timeTaken.current, TIME_LIMIT)}
       />
     );
   }

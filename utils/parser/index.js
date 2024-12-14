@@ -30,7 +30,6 @@ const parser = (rawText) => {
         questionNum += 1;
         questions.push(question);
       } else if (rawText[0] == "inst") {
-        // console.log(`INSTRUCTION ${i} ${rawText}`);
         // const raw = rawText.join("<br/>");
         // const instruction = {};
         // instruction["N"] = "I";
@@ -49,7 +48,6 @@ const parser = (rawText) => {
     output["questions"] = questions;
     // output["instructions"] = instructions;
 
-    console.log(output);
     return output;
   } catch (err) {
     throw `There is a error in question number ${questionNum + 1}. ${err}.`;

@@ -1,22 +1,28 @@
 import { useEffect, useState } from "react";
+import { parseQueryParam } from "./helper";
 
-const useFetch = (url) => {
+export const getUrl = () => {
+  return `https://storage.googleapis.com/mcq-test/${parseQueryParam("id")}.json`;
+};
+
+export const useFetch = (url) => {
   const [isLoading, setLoading] = useState(true);
   const [fetchedData, setFetchedData] = useState(null);
 
   useEffect(() => {
-    fetch(url)
-      .then((res) => res.json())
-      .then((result) => {
-        setFetchedData(result);
-        setLoading(false);
-      })
-      .catch(() => {
-        setLoading(false);
-      });
+    fetchData();
   }, []);
+
+  async function fetchData() {
+    try {
+      const res = await fetch(url);
+      setFetchedData(await res.json());
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return [fetchedData, isLoading];
 };
-
-export default useFetch;

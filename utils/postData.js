@@ -19,7 +19,7 @@ const postData = async (url, data, authKey) => {
     if (response.ok) return response.json();
     else return null;
   } catch (err) {
-    console.log("Network Error", err);
+    console.error("Network Error", err);
     return null;
   }
 };
