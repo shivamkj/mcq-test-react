@@ -12,6 +12,7 @@ import StartModal from "../components/interactiive-mcq/StartModal";
 import Result from "../components/interactiive-mcq/Result";
 import getResultAnaysis from "../utils/result";
 import { NotFound } from "../components/NotFound";
+import { parseQueryParam } from "../utils/helper";
 
 const correctSound = typeof Audio != "undefined" && new Audio("/correct.wav");
 const wrongSound = typeof Audio != "undefined" && new Audio("/incorrect.mp3");
@@ -23,7 +24,7 @@ const Test = () => {
   const [testStarted, setTestStarted] = useState(null);
   const [questionFinished, setQuestionFinished] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [data, isLoading] = useFetch(getUrl());
+  const [data, isLoading] = useFetch(getUrl(parseQueryParam("id")));
   const userResponse = useRef([]);
   const timeTaken = useRef([]);
 

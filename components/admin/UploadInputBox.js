@@ -36,7 +36,7 @@ const UploadInputBox = ({ onUpload }) => {
       />
       <Input
         name="key"
-        placeholder="Key"
+        placeholder="ID"
         type="password"
         required
         onChange={(v) => (key.current = v.target.value)}

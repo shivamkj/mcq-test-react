@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { parseQueryParam } from "./helper";
 
-export const getUrl = () => {
-  return `https://storage.googleapis.com/mcq-test/${parseQueryParam("id")}.json`;
+export const getUrl = (testId) => {
+  return `https://storage.googleapis.com/mcq-test/${testId}.json`;
 };
 
 export const useFetch = (url) => {
