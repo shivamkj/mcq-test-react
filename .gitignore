@@ -37,3 +37,5 @@ yarn-error.log*
 service-key.json
 .env.yaml
 .env
+
+firebase-debug.log

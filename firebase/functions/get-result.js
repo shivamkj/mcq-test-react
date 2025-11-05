@@ -1,9 +1,11 @@
-// const path = require("path");
-const Firestore = require("@google-cloud/firestore");
+const admin = require('firebase-admin');
 
-// const serviceKey = path.resolve("service-key.json");
-// const db = new Firestore({ keyFilename: serviceKey });
-const db = new Firestore();
+// Initialize Firebase Admin if not already initialized
+if (!admin.apps.length) {
+  admin.initializeApp();
+}
+
+const db = admin.firestore();
 
 module.exports.function = async (req, res) => {
   try {
