@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export const getUrl = (testId) => {
-  return `https://storage.googleapis.com/mcq-test/${testId}.json`;
+  return `https://firebasestorage.googleapis.com/v0/b/mcqtestapp-a1465.firebasestorage.app/o/${testId}.json?alt=media`;
 };
 
 export const useFetch = (url) => {

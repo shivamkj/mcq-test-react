@@ -50,7 +50,7 @@ const Test = () => {
 
   useEffect(() => {
     const id = window.location.search.substring(1).slice(3);
-    const url = `https://storage.googleapis.com/mcq-test/${id}.json`;
+    const url = `https://firebasestorage.googleapis.com/v0/b/mcqtestapp-a1465.firebasestorage.app/o/${id}.json?alt=media`;
     fetch(url)
       .then((res) => res.json())
       .then((result) => {
