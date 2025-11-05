@@ -13,7 +13,7 @@ const Result = () => {
     e.preventDefault();
     setSubmitStatus("UPLOADING");
     postData(
-      "https://asia-south1-theta-outrider-310911.cloudfunctions.net/get-result",
+      "https://us-central1-mcqtestapp-a1465.cloudfunctions.net/getResult",
       { testId: input.current.id },
       input.current.key
     ).then((res) => setSubmitStatus(res));

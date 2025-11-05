@@ -35,7 +35,7 @@ const Test = () => {
     result.current.score = score;
     setFinished(true);
     postData(
-      "https://asia-south1-theta-outrider-310911.cloudfunctions.net/send-result",
+      "https://us-central1-mcqtestapp-a1465.cloudfunctions.net/submitTest",
       {
         testId: window.location.search.slice(4),
         response: {

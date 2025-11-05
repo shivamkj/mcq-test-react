@@ -31,7 +31,7 @@ const Upload = () => {
       },
     };
     const data = await postData(
-      "https://asia-south1-theta-outrider-310911.cloudfunctions.net/upload-test",
+      "https://us-central1-mcqtestapp-a1465.cloudfunctions.net/uploadTest",
       submitData,
       key
     );
