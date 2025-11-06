@@ -1,18 +1,17 @@
 {
-  "name": "serverless-functions",
+  "name": "firebase",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "export $(cat .env | xargs) && npx functions-framework --source=get-result/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "packageManager": "pnpm@10.13.1",
   "dependencies": {
-    "@google-cloud/firestore": "^7.11.0",
-    "@google-cloud/functions-framework": "^3.4.2",
-    "@google-cloud/storage": "^7.14.0"
-  }
+    "@google-cloud/functions-framework": "^4.0.0"
+  },
+  "private": true
 }
