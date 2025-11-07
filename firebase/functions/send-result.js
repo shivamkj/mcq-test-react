@@ -1,4 +1,5 @@
 const admin = require('firebase-admin');
+const Firestore = require("firebase-admin/firestore");
 
 // Initialize Firebase Admin if not already initialized
 if (!admin.apps.length) {
