@@ -5,6 +5,7 @@ import Loader from "../../components/Loader";
 import parser from "../../utils/parser";
 import showToast from "../../utils/toast";
 import postData from "../../utils/postData";
+import { baseApiUrl } from "../../utils/helper";
 
 const Upload = () => {
   const [isSubmitted, setSubmitted] = useState(false);
@@ -30,11 +31,7 @@ const Upload = () => {
         totalQuestions: textareaRef.current.questions.length,
       },
     };
-    const data = await postData(
-      "https://us-central1-mcqtestapp-a1465.cloudfunctions.net/uploadTest",
-      submitData,
-      key
-    );
+    const data = await postData(`${baseApiUrl}/uploadTest`, submitData, key);
     if (data == null) {
       showToast("Error while Uploading data", "ERROR");
       setUploadStatus("ERROR");

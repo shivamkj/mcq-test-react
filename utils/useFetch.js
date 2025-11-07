@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 
-export const getUrl = (testId) => {
+export function getUrl(testId) {
   return `https://firebasestorage.googleapis.com/v0/b/mcqtestapp-a1465.firebasestorage.app/o/${testId}.json?alt=media`;
 };
 
-export const useFetch = (url) => {
+export function useFetch(url) {
   const [isLoading, setLoading] = useState(true);
   const [fetchedData, setFetchedData] = useState(null);
 

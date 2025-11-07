@@ -4,6 +4,7 @@ import Loader from "../../components/Loader";
 import { Input } from "../../components/admin/InputComponents";
 import Table from "../../components/admin/Table";
 import postData from "../../utils/postData";
+import { baseApiUrl } from "../../utils/helper";
 
 const Result = () => {
   const [submitStatus, setSubmitStatus] = useState(false);
@@ -13,7 +14,7 @@ const Result = () => {
     e.preventDefault();
     setSubmitStatus("UPLOADING");
     postData(
-      "https://us-central1-mcqtestapp-a1465.cloudfunctions.net/getResult",
+      `${baseApiUrl}/getResult`,
       { testId: input.current.id },
       input.current.key
     ).then((res) => setSubmitStatus(res));

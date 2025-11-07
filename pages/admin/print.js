@@ -3,6 +3,7 @@ import Head from "next/head";
 import { Input } from "../../components/admin/InputComponents";
 import Loader from "../../components/Loader";
 import { print } from "../../utils/print/print";
+import { getUrl } from "../../utils/useFetch";
 
 const STATES = {
   LOADING: 0,
@@ -20,7 +21,7 @@ const Print = () => {
     if (input.current.key != "test#print") return;
     setState(STATES.LOADING);
     const id = input.current.id;
-    fetch("https://storage.googleapis.com/mcq-test/" + id + ".json")
+    fetch(getUrl(id))
       .then((response) => response.json())
       .then((response) => {
         setTestData(response);

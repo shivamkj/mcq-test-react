@@ -7,6 +7,7 @@ import PieChart from "../components/PieChart";
 import Loader from "../components/Loader";
 import postData from "../utils/postData";
 import { NotFound } from "../components/NotFound";
+import { baseApiUrl } from "../utils/helper";
 
 const Test = () => {
   const [data, setData] = useState(null);
@@ -35,7 +36,7 @@ const Test = () => {
     result.current.score = score;
     setFinished(true);
     postData(
-      "https://us-central1-mcqtestapp-a1465.cloudfunctions.net/submitTest",
+      `${baseApiUrl}/submitTest`,
       {
         testId: window.location.search.slice(4),
         response: {

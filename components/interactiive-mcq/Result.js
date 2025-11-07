@@ -8,6 +8,7 @@ import PieChart from "../PieChart";
 import QuestionsTab from "./QuestionsTab";
 import { useEffect } from "react";
 import postData from "../../utils/postData";
+import { baseApiUrl } from "../../utils/helper";
 
 const DataCard = ({ title, data, Icon }) => (
   <div className="flex p-4  mx-4 shadow bg-white rounded border">
@@ -34,7 +35,7 @@ const Result = ({
 }) => {
   useEffect(() => {
     postData(
-      "https://asia-south1-theta-outrider-310911.cloudfunctions.net/send-result",
+      `${baseApiUrl}/sendResult`,
       {
         testId: window.location.search.slice(4),
         response: {

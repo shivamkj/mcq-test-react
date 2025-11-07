@@ -1,3 +1,5 @@
+export const baseApiUrl = "https://asia-south1-mcqtestapp-a1465.cloudfunctions.net"
+
 export function encodeParams(obj) {
   return Object.entries(obj)
     .map((kv) => kv.map(encodeURIComponent).join("="))
