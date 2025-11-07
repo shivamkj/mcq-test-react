@@ -27,15 +27,11 @@ module.exports.function = async (req, res) => {
     if (req.method !== "POST") throw "Method not allowed";
 
     if (req.headers.authorization) {
-      const adminSecretKeyValue = process.env.ADMIN_SECRET_KEY || adminSecretKey.value();
       const buff = new Buffer.from(req.headers.authorization, "base64");
       const authKey = buff.toString("utf8");
-      if (authKey != adminSecretKeyValue) {
-        throw "Unauthorised request";
-      }
-    } else {
-      throw "Unauthorised request";
-    }
+      if (authKey != adminSecretKey.value()) throw "Unauthorised request";
+    } else throw "Unauthorised request";
+
 
     const testName = req.body.examInfo.testName
       .toLowerCase()

@@ -8,7 +8,7 @@
  */
 
 const { setGlobalOptions } = require("firebase-functions");
-const { onRequest } = require("firebase-functions/https");
+const { onRequest } = require("firebase-functions/v2/https");
 const logger = require("firebase-functions/logger");
 
 // For cost control, you can set the maximum number of containers that can be
@@ -26,12 +26,16 @@ setGlobalOptions({ maxInstances: 10 });
 // Create and deploy your first functions
 // https://firebase.google.com/docs/functions/get-started
 
-exports.helloWorld = onRequest((request, response) => {
-    logger.info("Hello logs!", { structuredData: true });
-    response.send("Hello from Firebase!");
-});
+const reuestOptions = {
+    cors: {
+        origin: ["https://test.targetwithsksir.org"],
+        methods: ["POST", "OPTIONS"],
+        allowedHeaders: ["Content-Type", "Authorization"],
+    },
+    region: ["asia-south1"],
+};
 
-exports.getResult = onRequest(require("./get-result").function);
-exports.submitTest = onRequest(require("./send-result").function);
-exports.uploadTest = onRequest(require("./upload-test").function);
+exports.getResult = onRequest(reuestOptions, require("./get-result").function);
+exports.sendResult = onRequest(reuestOptions, require("./send-result").function);
+exports.uploadTest = onRequest(reuestOptions, require("./upload-test").function);
 

@@ -1,4 +1,5 @@
 const admin = require('firebase-admin');
+const { defineString } = require('firebase-functions/params');
 
 // Initialize Firebase Admin if not already initialized
 if (!admin.apps.length) {
@@ -6,6 +7,7 @@ if (!admin.apps.length) {
 }
 
 const db = admin.firestore();
+const adminSecretKey = defineString('ADMIN_SECRET_KEY');
 
 module.exports.function = async (req, res) => {
   try {
@@ -23,11 +25,11 @@ module.exports.function = async (req, res) => {
     if (req.headers.authorization) {
       const buff = new Buffer.from(req.headers.authorization, "base64");
       const authKey = buff.toString("utf8");
-      if (authKey != process.env.ADMIN_SECRET_KEY) throw "Unauthorised request";
+      if (authKey != adminSecretKey.value()) throw "Unauthorised request";
     } else throw "Unauthorised request";
 
     const testId = req.body.testId;
-    const testRef = await db.collection("tests").doc(testId);
+    const testRef = db.collection("tests").doc(testId);
 
     const doc = await testRef.get();
     const data = doc.data();
